@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Football Simulator</string>
+
+    <string name="greeting_main">Привет, тренер. Введи своё имя, либо выбери его из списка, если оно там уже есть.</string>
+    <string name="show_list">список</string>
+    <string name="continue_button">Продолжить</string>
+    <string name="name">Имя</string>
+    <string name="nationality">Гражданство: </string>
+    <string name="age">Возвраст: </string>
+    <string name="year">Год рождения: </string>
+    <string name="training">Тренирует: </string>
+</resources>
