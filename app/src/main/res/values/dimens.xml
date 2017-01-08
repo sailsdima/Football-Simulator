@@ -4,4 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="recycle_item_horisontal_margin">8dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="manager_photo_width">100dp</dimen>
+    <dimen name="manager_photo_height">125dp</dimen>
 </resources>

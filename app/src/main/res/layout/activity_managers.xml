@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/recycle_item_horisontal_margin"
     android:paddingRight="@dimen/recycle_item_horisontal_margin"
 
-    tools:context="com.example.sails.footballsimulator.ManagersActivity">
+    tools:context="com.example.sails.footballsimulator.activities.ManagersActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerViewManagers"

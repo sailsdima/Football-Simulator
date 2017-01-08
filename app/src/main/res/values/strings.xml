@@ -9,4 +9,5 @@
     <string name="age">Возвраст: </string>
     <string name="year">Год рождения: </string>
     <string name="training">Тренирует: </string>
+    <string name="search">Поиск</string>
 </resources>
