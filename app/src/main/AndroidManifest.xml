@@ -23,7 +23,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
-        <activity android:name=".activities.RegisterNewManagerActivity"></activity>
+        <activity
+            android:name=".activities.RegisterNewManagerActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".activities.PlayerActivity"></activity>
     </application>
 
 </manifest>

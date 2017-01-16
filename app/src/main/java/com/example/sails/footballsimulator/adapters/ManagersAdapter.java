@@ -1,10 +1,7 @@
 package com.example.sails.footballsimulator.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
-import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,13 +10,11 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.sails.footballsimulator.R;
 import com.example.sails.footballsimulator.entity.Manager;
 import com.example.sails.footballsimulator.listeners.OnRecycleViewInteractionListener;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +25,10 @@ import java.util.List;
 
 public class ManagersAdapter extends RecyclerView.Adapter<ManagersAdapter.ViewHolder> implements Filterable {
 
-    Context context;
-    List<Manager> managers;
-    List<Manager> filteredManagers;
-    OnRecycleViewInteractionListener myListener;
+    private Context context;
+    private List<Manager> managers;
+    private List<Manager> filteredManagers;
+    private OnRecycleViewInteractionListener myListener;
 
     public ManagersAdapter(Context context, List<Manager> managers, OnRecycleViewInteractionListener listener) {
         this.context = context;
@@ -43,7 +38,7 @@ public class ManagersAdapter extends RecyclerView.Adapter<ManagersAdapter.ViewHo
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageViewManagerPhoto;
         ImageView imageViewManagerCountryFlag;
         TextView tvManagerName;
@@ -54,7 +49,7 @@ public class ManagersAdapter extends RecyclerView.Adapter<ManagersAdapter.ViewHo
         View itemView;
         Manager manager;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
 
             this.itemView = itemView;
@@ -73,9 +68,7 @@ public class ManagersAdapter extends RecyclerView.Adapter<ManagersAdapter.ViewHo
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_manager, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(view);
-
-        return viewHolder;
+        return new ViewHolder(view);
 
     }
 
@@ -97,8 +90,6 @@ public class ManagersAdapter extends RecyclerView.Adapter<ManagersAdapter.ViewHo
         holder.tvManagerAge.setText(String.valueOf(age));
         holder.tvManagerYear.setText(String.valueOf(year));
         holder.tvManagerTeam.setText(team);
-        //holder.imageViewManagerPhoto.setImageResource(R.drawable.img_manager);
-
 
         Picasso.with(context).load("http://stbarvinok.in.ua/android-apps/football-simulator/managers/" + photoName).
                 placeholder(R.drawable.no_photo).

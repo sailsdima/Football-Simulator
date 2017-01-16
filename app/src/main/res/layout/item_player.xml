@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/recycleViewItemPlayer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="6">
+
+        <TextView
+            android:id="@+id/textViewPlayersPosition"
+            style="@style/textViewSquard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp"/>
+
+
+        <ImageView
+            android:id="@+id/imageViewPlayerPosition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/textViewPlayersPosition"
+            android:layout_alignLeft="@id/textViewPlayersPosition"
+            android:layout_alignTop="@id/textViewPlayersPosition"
+            android:src="@drawable/ic_position"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textViewPlayersNumber"
+        style="@style/textViewSquard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="7" />
+
+    <TextView
+        android:id="@+id/textViewPlayersName"
+        style="@style/textViewSquard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3" />
+
+    <TextView
+        android:id="@+id/textViewPlayersSkill"
+        style="@style/textViewSquard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="7" />
+
+</LinearLayout>

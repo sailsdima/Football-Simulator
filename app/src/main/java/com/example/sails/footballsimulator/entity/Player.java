@@ -8,21 +8,49 @@ import java.util.Calendar;
 
 public class Player {
 
-    int id;
-    String name, photoName;
-    int number, teamId, positionId;
-    int birthdayYear, height, weight;
-    String country;
-    int attackSkill, defenceSkill;
-    String leadingFoot;
+    private int id;
+    private String name, photoName;
+    private int number, teamId, positionId;
+    private String position;
+    private int birthdayYear, height, weight;
+    private String country;
+    private int attackSkill, defenceSkill;
+    private String leadingFoot;
 
-    public Player(int id, String name, String photoName, int number, int teamId, int positionId) {
+//    public Player(int id, String name, String photoName, int number, int teamId, int positionId) {
+//        this.id = id;
+//        this.name = name;
+//        this.photoName = photoName;
+//        this.number = number;
+//        this.teamId = teamId;
+//        this.positionId = positionId;
+//    }
+
+
+    public int getPositionId() {
+        return positionId;
+    }
+
+    public Player(int id, String name, int number, int teamId, String photo, int positionId, String position, int birthdayYear, int height, int weight, String country, String leadingFoot, int attackSkill, int defenceSkill) {
         this.id = id;
         this.name = name;
-        this.photoName = photoName;
+        this.photoName = photo;
         this.number = number;
         this.teamId = teamId;
         this.positionId = positionId;
+        this.position = position;
+        this.birthdayYear = birthdayYear;
+        this.height = height;
+        this.weight = weight;
+        this.country = country;
+        this.attackSkill = attackSkill;
+        this.defenceSkill = defenceSkill;
+        this.leadingFoot = leadingFoot;
+    }
+
+    @Override
+    public String toString() {
+        return "Player id = " + id + " name = " + name;
     }
 
     public void setLeadingFoot(String leadingFoot) {
@@ -73,8 +101,8 @@ public class Player {
         return teamId;
     }
 
-    public int getPositionId() {
-        return positionId;
+    public String getPosition() {
+        return position;
     }
 
     public int getBirthdayYear() {

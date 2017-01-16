@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/fragment_team_selection_style"
+    android:orientation="vertical"
+    tools:context="com.example.sails.footballsimulator.fragments.TeamSelectionFragment">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerViewChangingManagersInfo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

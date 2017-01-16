@@ -1,7 +1,6 @@
 package com.example.sails.footballsimulator.helpers;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -11,12 +10,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.example.sails.footballsimulator.App;
-import com.example.sails.footballsimulator.activities.MainActivity;
-import com.example.sails.footballsimulator.entity.Manager;
 
 /**
  * Created by sails on 05.01.2017.
@@ -26,7 +21,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private static DataBaseHelper dbInstance;
 
-    private static final String LOG_TAG = "debug";
 
     // путь к базе данных вашего приложения
     private static String DB_PATH = "/data/data/com.example.sails.footballsimulator/databases/";
@@ -50,9 +44,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private void createDataBase() {
         boolean dbExist = checkDataBase();
-        if (!dbExist) {
+        //if (!dbExist) {
             copyDataBase();
-        }
+        //}
     }
 
     private boolean checkDataBase() {
@@ -67,12 +61,25 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (checkDB != null) {
             checkDB.close();
         }
-        return checkDB != null ? true : false;
+        return checkDB != null;
     }
 
     private void copyDataBase() {
         //Открываем локальную БД как входящий поток
-        InputStream myInput = null;
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        System.out.println("coping DB \n\n\n\n");
+        InputStream myInput;
         try {
             myInput = mContext.getAssets().open(DB_NAME);
 
@@ -101,7 +108,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private void openDataBase() {
         //открываем БД
         String myPath = DB_PATH + DB_NAME;
-        myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+        try{
+            myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+        } catch (Exception e){
+            Log.e("debug", e.toString());
+        }
     }
 
     @Override

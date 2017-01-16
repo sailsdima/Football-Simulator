@@ -70,7 +70,6 @@ public class ManagersActivity extends AppCompatActivity implements OnRecycleView
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-
         List<Manager> managers = DataBaseController.getManagersFromDB();
 
         adapter = new ManagersAdapter(this, managers, this);

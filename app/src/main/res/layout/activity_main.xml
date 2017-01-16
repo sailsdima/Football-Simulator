@@ -21,7 +21,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
+            android:contentDescription="@string/manager"
             android:src="@drawable/img_manager_main" />
 
         <TextView
@@ -34,7 +35,6 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:orientation="vertical">
 
 
@@ -55,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@+id/editTextName"
-                android:layout_alignRight="@+id/editTextName"
+                android:layout_alignEnd="@+id/editTextName"
                 android:layout_alignTop="@+id/editTextName"
                 android:padding="5dp"
                 android:src="@drawable/selector_button_open_mng_list"

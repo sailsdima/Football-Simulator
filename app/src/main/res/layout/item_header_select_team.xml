@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/recycleManagersHeader"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/textViewWelcomeMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome" />
+
+        <TextView
+            android:id="@+id/textViewManagerName"
+            style="@style/textViewWelcomeMessageName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <TextView
+        style="@style/textViewNewManagerValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/your_country" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editTextNewCountry"
+            style="@style/editTextInputValues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords" />
+
+        <ImageView
+            android:id="@+id/imageViewCountryFlag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/editTextNewCountry"
+            android:layout_alignRight="@id/editTextNewCountry"
+            android:layout_alignTop="@id/editTextNewCountry"
+            android:src="@drawable/flag_unknown" />
+    </RelativeLayout>
+
+
+    <TextView
+        style="@style/textViewNewManagerValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/birthday_year" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editTextNewYear"
+            style="@style/editTextInputValues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned" />
+
+        <ImageView
+            android:id="@+id/imageViewYearCorrectness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/editTextNewYear"
+            android:layout_alignRight="@id/editTextNewYear"
+            android:layout_alignTop="@id/editTextNewYear" />
+    </RelativeLayout>
+
+
+    <TextView
+        style="@style/textViewNewManagerValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose_your_team" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/buttonPrev"
+            style="@style/buttonCircle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:src="@mipmap/ic_button_previous" />
+
+
+        <ImageSwitcher
+            android:id="@+id/imageSwitcherTeamLogo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+        </ImageSwitcher>
+
+
+        <ImageButton
+            android:id="@+id/buttonNext"
+            style="@style/buttonCircle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:src="@mipmap/ic_button_next" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewNewTeamName"
+        style="@style/textViewTeamName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RatingBar
+        android:id="@+id/ratingBarTeam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:theme="@style/ratingBar" />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:columnCount="3">
+
+
+            <TextView
+                style="@style/gridViewHeaders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/attack" />
+
+            <TextView
+                style="@style/gridViewHeaders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/half_back" />
+
+            <TextView
+                style="@style/gridViewHeaders"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:text="@string/defence" />
+
+            <TextView
+                android:id="@+id/textViewTeamAttackLevel"
+                style="@style/gridViewItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1" />
+
+            <TextView
+                android:id="@+id/textViewTeamHalfBackLevel"
+                style="@style/gridViewItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1" />
+
+            <TextView
+                android:id="@+id/textViewTeamDefenceLevel"
+                style="@style/gridViewItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1" />
+    </GridLayout>
+
+</LinearLayout>

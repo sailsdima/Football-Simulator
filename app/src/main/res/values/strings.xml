@@ -10,4 +10,17 @@
     <string name="year">Год рождения: </string>
     <string name="training">Тренирует: </string>
     <string name="search">Поиск</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="your_country">Ваша страна:</string>
+    <string name="birthday_year">Год рождения:</string>
+    <string name="choose_your_team">Выберите команду:</string>
+    <string name="welcome">Добро пожаловать,</string>
+    <string name="attack">НАП</string>
+    <string name="half_back">ПЗЩ</string>
+    <string name="defence">ЗАЩ</string>
+    <string name="squard">Состав</string>
+    <string name="total">Общ.</string>
+    <string name="manager">Тренер:</string>
 </resources>

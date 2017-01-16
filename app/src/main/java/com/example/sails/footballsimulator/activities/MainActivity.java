@@ -5,10 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageSwitcher;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.widget.ViewSwitcher;
 
 import com.example.sails.footballsimulator.R;
 import com.example.sails.footballsimulator.controllers.DataBaseController;
@@ -57,11 +63,13 @@ public class MainActivity extends AppCompatActivity {
                 buttonContinueClick();
             }
         });
+
+
     }
 
     private void buttonContinueClick() {
 
-        if(null == editTextName.getText().toString() || editTextName.getText().toString().length() < 3) {
+        if(editTextName.getText().toString().length() < 3) {
             Toast.makeText(getApplicationContext(), "Invalid name", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -80,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void openRegisterNewManagerActivity(){
         Intent intent = new Intent(this, RegisterNewManagerActivity.class);
+        intent.putExtra("manager_name", editTextName.getText().toString());
         startActivity(intent);
     }
 
