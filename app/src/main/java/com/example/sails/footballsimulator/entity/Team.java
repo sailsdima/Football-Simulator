@@ -15,6 +15,7 @@ public class Team {
 
     private int id;
     private String name;
+    private String teamColor;
     private int leagueId;
     private int managerId;
     private String emblemName;
@@ -25,9 +26,10 @@ public class Team {
     private List<Player> players;
     private String managerName;
 
-    public Team(int id, String name, int leagueId, int managerId, String managerName, String emblemName, long money, int attackSkill, int halfBackSkill, int defenceSkill, List<Player> players) {
+    public Team(int id, String name, String teamColor, int leagueId, int managerId, String managerName, String emblemName, long money, int attackSkill, int halfBackSkill, int defenceSkill, List<Player> players) {
         this.id = id;
         this.name = name;
+        this.teamColor = teamColor;
         this.leagueId = leagueId;
         this.managerId = managerId;
         this.managerName = managerName;
@@ -92,6 +94,11 @@ public class Team {
     public String getName() {
         return name;
     }
+
+    public String getTeamColor() {
+        return teamColor;
+    }
+
 
     public int getLeagueId() {
         return leagueId;

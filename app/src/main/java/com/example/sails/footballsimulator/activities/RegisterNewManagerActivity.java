@@ -26,14 +26,6 @@ public class RegisterNewManagerActivity extends AppCompatActivity implements Tea
         setContentView(R.layout.activity_register_new_manager);
 
 
-        System.out.println(getIntent().getStringExtra("manager_name"));
-        System.out.println(getIntent().getStringExtra("manager_name"));
-        System.out.println(getIntent().getStringExtra("manager_name"));
-        System.out.println(getIntent().getStringExtra("manager_name"));
-        System.out.println(getIntent().getStringExtra("manager_name"));
-        System.out.println(getIntent().getStringExtra("manager_name"));
-        System.out.println(getIntent().getStringExtra("manager_name"));
-
         TeamSelectionFragment fragment = TeamSelectionFragment.newInstance(1,
                 getIntent().getStringExtra("manager_name"));
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

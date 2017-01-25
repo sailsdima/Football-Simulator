@@ -1,6 +1,8 @@
 package com.example.sails.footballsimulator.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextName;
     Button buttonContinue;
     private final int REQUEST_CODE_CHOOSE_MANAGER = 1;
+    private final String SP_LAST_NAME_INPUTED = "last_name";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        SharedPreferences sharedPreferences = getSharedPreferences("app", Context.MODE_PRIVATE);
+        editTextName.setText(sharedPreferences.getString(SP_LAST_NAME_INPUTED, ""));
 
     }
 
@@ -84,6 +89,16 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences sharedPreferences = getSharedPreferences("app", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(SP_LAST_NAME_INPUTED, editTextName.getText().toString());
+        editor.apply();
     }
 
     private void openRegisterNewManagerActivity(){

@@ -8,4 +8,6 @@
     <color name="colorDF">#ddbc06</color>
     <color name="colorHB">#2b8d04</color>
     <color name="colorAT">#2774f2</color>
+
+    <color name="background_player_activity">#f7f7f7</color>
 </resources>

@@ -9,7 +9,7 @@ import java.util.Calendar;
 public class Player {
 
     private int id;
-    private String name, photoName;
+    private String name, photoName, teamName = "undefined";
     private int number, teamId, positionId;
     private String position;
     private int birthdayYear, height, weight;
@@ -46,6 +46,42 @@ public class Player {
         this.attackSkill = attackSkill;
         this.defenceSkill = defenceSkill;
         this.leadingFoot = leadingFoot;
+
+        checkAndFixDataIsNull();
+    }
+
+    public Player(int id, String name, int number, int teamId, String teamName, String photo, int positionId, String position, int birthdayYear, int height, int weight, String country, String leadingFoot, int attackSkill, int defenceSkill) {
+        this.id = id;
+        this.name = name;
+        this.photoName = photo;
+        this.number = number;
+        this.teamId = teamId;
+        this.teamName = teamName;
+        this.positionId = positionId;
+        this.position = position;
+        this.birthdayYear = birthdayYear;
+        this.height = height;
+        this.weight = weight;
+        this.country = country;
+        this.attackSkill = attackSkill;
+        this.defenceSkill = defenceSkill;
+        this.leadingFoot = leadingFoot;
+
+        checkAndFixDataIsNull();
+    }
+
+    private void checkAndFixDataIsNull(){
+        if(null == name || name.length() == 0)
+            name = "unknown";
+
+        if(null == position || position.length() == 0)
+            position = "UNK";
+
+        if(null == country || country.length() == 0)
+            country = "unknown";
+
+        if(null == leadingFoot || leadingFoot.length() == 0)
+            leadingFoot = "unknown";
     }
 
     @Override
@@ -86,6 +122,7 @@ public class Player {
     }
 
     public String getName() {
+
         return name;
     }
 
@@ -109,7 +146,7 @@ public class Player {
         return birthdayYear;
     }
 
-    public int getAge(){
+    public int getAge() {
         Calendar calendar = Calendar.getInstance();
         return calendar.get(Calendar.YEAR) - birthdayYear;
     }
@@ -136,5 +173,14 @@ public class Player {
 
     public String getLeadingFoot() {
         return leadingFoot;
+    }
+
+    public int getTotalSkill() {
+
+        return (attackSkill > defenceSkill) ? attackSkill : defenceSkill;
+    }
+
+    public String getTeamName() {
+        return teamName;
     }
 }

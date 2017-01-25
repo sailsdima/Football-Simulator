@@ -23,4 +23,17 @@
     <string name="squard">Состав</string>
     <string name="total">Общ.</string>
     <string name="manager">Тренер:</string>
+    <string name="height">Рост</string>
+    <string name="weight">Вес</string>
+    <string name="leading_foot">Ведущая нога</string>
+    <string name="attack_level">Атака</string>
+    <string name="defence_level">Защита</string>
+    <string name="team">Команда</string>
+    <string name="country">Страна</string>
+    <string name="age_">Возвраст</string>
+    <string name="next_match">Следующий матч</string>
+    <string name="exit">Выход</string>
+    <string name="results">Результаты</string>
+    <string name="table">Таблица</string>
+
 </resources>

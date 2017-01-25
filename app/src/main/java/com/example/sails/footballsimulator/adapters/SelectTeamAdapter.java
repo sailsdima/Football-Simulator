@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
@@ -23,7 +24,7 @@ import android.widget.ViewSwitcher;
 import com.example.sails.footballsimulator.R;
 import com.example.sails.footballsimulator.entity.Player;
 import com.example.sails.footballsimulator.entity.Team;
-import com.example.sails.footballsimulator.listeners.OnPlayerClickListener;
+import com.example.sails.footballsimulator.listeners.OnRecyclerViewSelectTeamInteractionListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -39,19 +40,23 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     private final int VIEW_TYPE_ITEM_0 = 1;
     private final int VIEW_TYPE_ITEM_1 = 2;
     private final int VIEW_TYPE_ITEM_2 = 3;
+    private final int VIEW_TYPE_FOOTER = 4;
+
+    private final int COUNT_OF_EXTRA_VIEWS = 3; //headers - 2, footer
+
     private List<Player> players;
     private Context context;
     private String managersName;
     private List<Team> teams;
     private int currentTeam;
-    private OnPlayerClickListener onPlayerClickListener;
+    private OnRecyclerViewSelectTeamInteractionListener onRecyclerViewSelectTeamInteractionListener;
 
-    public SelectTeamAdapter(Context context, String managersName, List<Team> teams, OnPlayerClickListener onPlayerClickListener) {
+    public SelectTeamAdapter(Context context, String managersName, List<Team> teams,
+                             OnRecyclerViewSelectTeamInteractionListener onRecyclerViewSelectTeamInteractionListener) {
         this.teams = teams;
         this.context = context;
         this.managersName = managersName;
-        this.onPlayerClickListener = onPlayerClickListener;
-
+        this.onRecyclerViewSelectTeamInteractionListener = onRecyclerViewSelectTeamInteractionListener;
 
         currentTeam = 0;
         this.players = teams.get(currentTeam).getPlayers();
@@ -81,6 +86,10 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 v.setBackgroundResource(R.drawable.selector_item_dark);
                 viewHolder = new PlayersHolder(v);
                 break;
+            case VIEW_TYPE_FOOTER:
+                v = LayoutInflater.from(parent.getContext()).inflate(R.layout.button_go_main_menu, parent, false);
+                viewHolder = new FooterHolder(v);
+                break;
         }
         return viewHolder;
     }
@@ -93,8 +102,22 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             createHeaderView((HeaderHolder) holder);
         } else if (holder instanceof OnTopHolder) {
             createTopView((OnTopHolder) holder);
+        } else if (holder instanceof FooterHolder) {
+            createFooterView((FooterHolder) holder);
         }
+    }
 
+    private void createFooterView(FooterHolder holder) {
+        holder.buttonGoMainMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                onRecyclerViewSelectTeamInteractionListener.onConfirmButtonClick();
+
+
+            }
+        });
     }
 
     private void createTopView(OnTopHolder holder) {
@@ -235,7 +258,10 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 view.setSelected(motionEvent.getAction() == MotionEvent.ACTION_DOWN ||
                         motionEvent.getAction() == MotionEvent.ACTION_MOVE);
-                onPlayerClickListener.onPlayerClick(player.getId());
+
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    onRecyclerViewSelectTeamInteractionListener.onPlayerClick(player.getId());
+                }
                 return true;
             }
         });
@@ -244,17 +270,20 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             @Override
             public void onClick(View view) {
 
-                onPlayerClickListener.onPlayerClick(player.getId());
+                onRecyclerViewSelectTeamInteractionListener.onPlayerClick(player.getId());
             }
         });
     }
 
     @Override
     public int getItemViewType(int position) {
+        System.out.println("AAAAAAAAAAAAAAAAAAA  " + position);
         if (position == 0)
             return VIEW_TYPE_HEADER;
         if (position == 1)
             return VIEW_TYPE_ITEM_0;
+        if (position == getItemCount() - 1)
+            return VIEW_TYPE_FOOTER;
         if (position % 2 == 0)
             return VIEW_TYPE_ITEM_1;
         return VIEW_TYPE_ITEM_2;
@@ -263,7 +292,7 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemCount() {
-        return players.size() + 2;//because there are 2 header layouts
+        return players.size() + 3;//because there are 2 header layouts, 1 footer
     }
 
     private boolean checkYear(String year) {
@@ -346,6 +375,16 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             super(itemView);
             tvCurrentManagerName = (TextView) itemView.findViewById(R.id.tvCurrentManagerName);
 
+        }
+    }
+
+    private class FooterHolder extends RecyclerView.ViewHolder {
+
+        Button buttonGoMainMenu;
+
+        FooterHolder(View itemView) {
+            super(itemView);
+            buttonGoMainMenu = (Button) itemView.findViewById(R.id.buttonGoMainMenu);
         }
     }
 }

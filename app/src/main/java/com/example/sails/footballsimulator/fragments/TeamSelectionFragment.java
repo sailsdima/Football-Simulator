@@ -1,6 +1,7 @@
 package com.example.sails.footballsimulator.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,15 +13,17 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.sails.footballsimulator.R;
+import com.example.sails.footballsimulator.activities.MainMenuActivity;
+import com.example.sails.footballsimulator.activities.PlayerActivity;
 import com.example.sails.footballsimulator.adapters.SelectTeamAdapter;
 import com.example.sails.footballsimulator.controllers.DataBaseController;
 import com.example.sails.footballsimulator.entity.Team;
-import com.example.sails.footballsimulator.listeners.OnPlayerClickListener;
+import com.example.sails.footballsimulator.listeners.OnRecyclerViewSelectTeamInteractionListener;
 
 import java.util.List;
 
 
-public class TeamSelectionFragment extends Fragment implements OnPlayerClickListener{
+public class TeamSelectionFragment extends Fragment implements OnRecyclerViewSelectTeamInteractionListener {
 
 
     private static int defaultTeamId;
@@ -93,12 +96,18 @@ public class TeamSelectionFragment extends Fragment implements OnPlayerClickList
 
     @Override
     public void onPlayerClick(int id) {
-        Toast.makeText(getActivity(), id + " ", Toast.LENGTH_SHORT).show(); 
+        Toast.makeText(getActivity(), id + " ", Toast.LENGTH_SHORT).show();
+
+
+        Intent intent = new Intent(getActivity().getApplication().getApplicationContext(), PlayerActivity.class);
+        intent.putExtra("player_id", id);
+        startActivity(intent);
     }
 
     @Override
     public void onConfirmButtonClick() {
-
+        Intent intent = new Intent(getContext(), MainMenuActivity.class);
+        startActivity(intent);
     }
 
 
