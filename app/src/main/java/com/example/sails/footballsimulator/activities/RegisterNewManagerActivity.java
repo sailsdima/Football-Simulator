@@ -14,7 +14,7 @@ import com.example.sails.footballsimulator.R;
 import com.example.sails.footballsimulator.controllers.DataBaseController;
 import com.example.sails.footballsimulator.fragments.TeamSelectionFragment;
 
-public class RegisterNewManagerActivity extends AppCompatActivity implements TeamSelectionFragment.OnFragmentInteractionListener{
+public class RegisterNewManagerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,4 @@ public class RegisterNewManagerActivity extends AppCompatActivity implements Tea
         ft.commit();
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }

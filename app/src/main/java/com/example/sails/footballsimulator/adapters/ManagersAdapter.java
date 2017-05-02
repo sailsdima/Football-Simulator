@@ -78,8 +78,8 @@ public class ManagersAdapter extends RecyclerView.Adapter<ManagersAdapter.ViewHo
         holder.manager = manager;
 
         String name = manager.getName();
-        String photoName = manager.getPhotoName();
-        final String country = manager.getContry();
+        String photoUri = manager.getPhotoUri();
+        final String country = manager.getCountry();
         int age = manager.getAge();
         int year = manager.getBirthdayYear();
         String team = manager.getTeam();
@@ -91,7 +91,7 @@ public class ManagersAdapter extends RecyclerView.Adapter<ManagersAdapter.ViewHo
         holder.tvManagerYear.setText(String.valueOf(year));
         holder.tvManagerTeam.setText(team);
 
-        Picasso.with(context).load("http://stbarvinok.in.ua/android-apps/football-simulator/managers/" + photoName).
+        Picasso.with(context).load(photoUri).
                 placeholder(R.drawable.no_photo).
                 fit().
                 error(R.drawable.no_photo).

@@ -50,6 +50,12 @@
             android:layout_height="wrap_content"
             android:text="Чатик))" />
 
+        <Button
+            style="@style/buttonMainMenu"
+            android:id="@+id/buttonOpenManagersPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/my_page" />
 
         <Button
             style="@style/buttonMainMenu"

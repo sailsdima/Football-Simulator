@@ -2,6 +2,7 @@ package com.example.sails.footballsimulator.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -19,9 +20,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.example.sails.footballsimulator.R;
+import com.example.sails.footballsimulator.entity.Manager;
 import com.example.sails.footballsimulator.entity.Player;
 import com.example.sails.footballsimulator.entity.Team;
 import com.example.sails.footballsimulator.listeners.OnRecyclerViewSelectTeamInteractionListener;
@@ -44,6 +47,8 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     private final int COUNT_OF_EXTRA_VIEWS = 3; //headers - 2, footer
 
+
+    private HeaderHolder headerHolder = null;
     private List<Player> players;
     private Context context;
     private String managersName;
@@ -112,12 +117,23 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             @Override
             public void onClick(View view) {
 
+                if (null != headerHolder && checkInputedData()) {
+                    String name = managersName;
+                    String country = headerHolder.editTextNewCountry.getText().toString();
+                    int year = Integer.valueOf(headerHolder.editTextNewYear.getText().toString());
+                    int teamId = teams.get(currentTeam).getId();
+                    Manager manager = new Manager(name, year, country, teamId);
 
-                onRecyclerViewSelectTeamInteractionListener.onConfirmButtonClick();
-
-
+                    onRecyclerViewSelectTeamInteractionListener.onConfirmButtonClick(manager);
+                }
             }
         });
+    }
+
+    private boolean checkInputedData() {
+        return (headerHolder.editTextNewCountry.getText().toString().length() > 0) &&
+                headerHolder.editTextNewYear.toString().length() > 0 &&
+                checkYear(headerHolder.editTextNewYear.getText().toString());
     }
 
     private void createTopView(OnTopHolder holder) {
@@ -125,6 +141,7 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     private void createHeaderView(final HeaderHolder holder) {
+        headerHolder = holder;
         holder.textViewManagerName.setText(managersName);
 
         setHeaderListeners(holder);
@@ -277,7 +294,6 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public int getItemViewType(int position) {
-        System.out.println("AAAAAAAAAAAAAAAAAAA  " + position);
         if (position == 0)
             return VIEW_TYPE_HEADER;
         if (position == 1)
@@ -287,12 +303,11 @@ public class SelectTeamAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (position % 2 == 0)
             return VIEW_TYPE_ITEM_1;
         return VIEW_TYPE_ITEM_2;
-
     }
 
     @Override
     public int getItemCount() {
-        return players.size() + 3;//because there are 2 header layouts, 1 footer
+        return players.size() + COUNT_OF_EXTRA_VIEWS;//because there are 2 header layouts, 1 footer
     }
 
     private boolean checkYear(String year) {

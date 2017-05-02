@@ -17,6 +17,7 @@ import com.example.sails.footballsimulator.activities.MainMenuActivity;
 import com.example.sails.footballsimulator.activities.PlayerActivity;
 import com.example.sails.footballsimulator.adapters.SelectTeamAdapter;
 import com.example.sails.footballsimulator.controllers.DataBaseController;
+import com.example.sails.footballsimulator.entity.Manager;
 import com.example.sails.footballsimulator.entity.Team;
 import com.example.sails.footballsimulator.listeners.OnRecyclerViewSelectTeamInteractionListener;
 
@@ -31,7 +32,6 @@ public class TeamSelectionFragment extends Fragment implements OnRecyclerViewSel
     private static final String ARG_DEFAULT_TEAM = "defaultTeamId";
     private static final String ARG_MANAGERS_NAME = "managersName";
 
-    private OnFragmentInteractionListener mListener;
 
     public TeamSelectionFragment() {
 
@@ -70,48 +70,25 @@ public class TeamSelectionFragment extends Fragment implements OnRecyclerViewSel
         return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
 
     @Override
     public void onPlayerClick(int id) {
-        Toast.makeText(getActivity(), id + " ", Toast.LENGTH_SHORT).show();
-
-
         Intent intent = new Intent(getActivity().getApplication().getApplicationContext(), PlayerActivity.class);
         intent.putExtra("player_id", id);
         startActivity(intent);
     }
 
     @Override
-    public void onConfirmButtonClick() {
-        Intent intent = new Intent(getContext(), MainMenuActivity.class);
-        startActivity(intent);
+    public void onConfirmButtonClick(Manager manager) {
+        if (null != manager) {
+            int newManagerId = DataBaseController.insertNewManagerIntoDB(manager);
+
+            Intent intent = new Intent(getContext(), MainMenuActivity.class);
+            intent.putExtra("manager_id", newManagerId);
+            startActivity(intent);
+        } else
+            Toast.makeText(getContext(), "Error", Toast.LENGTH_SHORT).show();
     }
 
 
-    public interface OnFragmentInteractionListener {
-        void onFragmentInteraction(Uri uri);
-    }
 }

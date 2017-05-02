@@ -1,5 +1,6 @@
 package com.example.sails.footballsimulator.controllers;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -29,7 +30,7 @@ public class DataBaseController {
             int idCol = cursor.getColumnIndex("_id");
             int nameCol = cursor.getColumnIndex("name");
             int birthdayYearCol = cursor.getColumnIndex("birthday_year");
-            int countryCol = cursor.getColumnIndex("contry");
+            int countryCol = cursor.getColumnIndex("country");
             int photoCol = cursor.getColumnIndex("photo");
             int teamCol = cursor.getColumnIndex("team");
             int teamIdCol = cursor.getColumnIndex("team_id");
@@ -41,7 +42,7 @@ public class DataBaseController {
                 String country = cursor.getString(countryCol);
                 String photo = cursor.getString(photoCol);
                 String team = cursor.getString(teamCol);
-                String teamId = cursor.getString(teamIdCol);
+                int teamId = cursor.getInt(teamIdCol);
 
                 Manager manager = new Manager(id, name, birthdayYear, country, photo, team, teamId);
                 managers.add(manager);
@@ -53,7 +54,6 @@ public class DataBaseController {
     }
 
     public static Manager getManagerFromDBById(int id) {
-
         SQLiteDatabase rDatabase = DataBaseHelper.getInstance().getReadableDatabase();
 
         Cursor cursor = rDatabase.rawQuery("SELECT * FROM managers WHERE _id = " + id + " LIMIT 1;", new String[]{});
@@ -61,7 +61,7 @@ public class DataBaseController {
         if (cursor.moveToFirst()) {
             int nameCol = cursor.getColumnIndex("name");
             int birthdayYearCol = cursor.getColumnIndex("birthday_year");
-            int countryCol = cursor.getColumnIndex("contry");
+            int countryCol = cursor.getColumnIndex("country");
             int photoCol = cursor.getColumnIndex("photo");
             int teamCol = cursor.getColumnIndex("team");
             int teamIdCol = cursor.getColumnIndex("team_id");
@@ -71,7 +71,7 @@ public class DataBaseController {
             String country = cursor.getString(countryCol);
             String photo = cursor.getString(photoCol);
             String team = cursor.getString(teamCol);
-            String teamId = cursor.getString(teamIdCol);
+            int teamId = cursor.getInt(teamIdCol);
 
             cursor.close();
             return new Manager(id, name, birthdayYear, country, photo, team, teamId);
@@ -99,6 +99,29 @@ public class DataBaseController {
         }
         cursor.close();
         return names;
+    }
+
+    public static int getManagerIdByName(String name){
+        SQLiteDatabase rDatabase = DataBaseHelper.getInstance().getReadableDatabase();
+
+        Cursor cursor = rDatabase.rawQuery("SELECT _id FROM managers where name = '" + name + "' LIMIT 1;", new String[]{});
+
+        int id = 1;
+
+        if (cursor.moveToFirst()) {
+            int idCol = cursor.getColumnIndex("_id");
+
+            id = cursor.getInt(idCol);
+        }
+
+        return id;
+    }
+
+    public static void updateManagersNewPhotoUri(int id, String uri){
+
+        SQLiteDatabase wDatabase = DataBaseHelper.getInstance().getWritableDatabase();
+        wDatabase.execSQL("update managers set photo = '" + uri + "' where _id = " + id + ";");
+
     }
 
     public static List<Team> getFullTeamsInfoFromDB() {
@@ -287,13 +310,16 @@ public class DataBaseController {
         return player;
     }
 
-    public static boolean insertNewManagerIntoDB(Manager manager){
+    public static int insertNewManagerIntoDB(Manager manager){
         SQLiteDatabase wrDataBase = DataBaseHelper.getInstance().getWritableDatabase();
 
-        wrDataBase.execSQL("insert into managers (name, birthday_year, country, team_id)" +
-                " values (" + manager.getName() + ", " + manager.getBirthdayYear() + ", " +
-                manager.getContry() + ", " + manager.getTeamId() + ");");
+        ContentValues values = new ContentValues();
 
-        return true;
+        values.put("name", manager.getName());
+        values.put("birthday_year", manager.getBirthdayYear());
+        values.put("country", manager.getCountry());
+        values.put("team_id", manager.getTeamId());
+
+        return (int)wrDataBase.insert("managers", null, values);
     }
 }

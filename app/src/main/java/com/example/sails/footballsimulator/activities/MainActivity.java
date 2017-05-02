@@ -82,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
         String name = editTextName.getText().toString();
 
         if(DataBaseController.getManagerNamesList().contains(name)){
-            // TODO add open game menu activity
+
+            openMainMenuActivity();
+
         } else {
 
             openRegisterNewManagerActivity();
@@ -99,6 +101,12 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(SP_LAST_NAME_INPUTED, editTextName.getText().toString());
         editor.apply();
+    }
+
+    private void openMainMenuActivity(){
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        intent.putExtra("manager_id", Integer.valueOf(DataBaseController.getManagerIdByName(editTextName.getText().toString())));
+        startActivity(intent);
     }
 
     private void openRegisterNewManagerActivity(){
