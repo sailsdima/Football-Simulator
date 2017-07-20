@@ -9,3 +9,5 @@ Welcome to the Football-Simulator wiki!
 ![](https://pp.userapi.com/c638530/v638530186/409ee/EfhuXKyneQQ.jpg)
 
 ![](https://pp.userapi.com/c638530/v638530186/409f6/M_DNZK-vjao.jpg)
+
+![](https://pp.userapi.com/c836329/v836329654/557c0/aS5Ie8FAz3I.jpg)
