@@ -3,7 +3,7 @@
 ### Welcome to the Football-Simulator wiki!
 #### MAIN GOAL: Simulate Football Match
 
-⋅⋅* In the game your role is football coach (player can choose real one or create new coach).
+* In the game your role is football coach (player can choose real one or create new coach).
 
 * All information about coaches, teams and players is stored in the **SQLite** database. 
 
@@ -23,7 +23,7 @@
 
 It is planned to make the application a fully-function simulator: to conduct transfers between team players to strengthen the team, to generate the tournament table and also add the ability to change tactics during the match
 
-
+#### SCREENSHOTS
 | 1  |      2      |  3 |
 |----------|:-------------:|------:|
 | <img src="https://pp.userapi.com/c639821/v639821646/35317/ok-QnXvZtgw.jpg" alt="Mainpage" width= "200px"/> |  <img src="https://pp.userapi.com/c639821/v639821646/3531f/D9eZFkZh2eM.jpg" alt="Mainpage" width= "200px"/>  | <img src="https://pp.userapi.com/c639821/v639821646/3532b/jnICVzXFwQc.jpg" alt="Mainpage" width= "200px"/>|
