@@ -10,8 +10,8 @@
 * Events that can occur in the match: _goal_, _penalty_, _corner_ _kick_, _red_, _yellow_ _card_.
 
 * Generated event is RANDOM, but there are a few criteria that are taken into account while generating event:
- 1. The team rating (the skills of the players of this team);
- 2. The number of players on the field (if the player of the team received a red card, the chance that this team will perform the effective action in the attack decreases)
+     1. The team rating (the skills of the players of this team);
+     2. The number of players on the field (if the player of the team received a red card, the chance that this team will  perform the effective action in the attack decreases)
  
 #### ADDITIONALLY 
 
