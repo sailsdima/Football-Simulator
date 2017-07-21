@@ -2,12 +2,19 @@
 
 Welcome to the Football-Simulator wiki!
 
-![](https://pp.userapi.com/c638530/v638530186/40a48/G1vpW312nTE.jpg)
 
-![](https://pp.userapi.com/c638530/v638530186/409e6/D3_BXHjZu9g.jpg)
 
-![](https://pp.userapi.com/c638530/v638530186/409ee/EfhuXKyneQQ.jpg)
 
-![](https://pp.userapi.com/c638530/v638530186/409f6/M_DNZK-vjao.jpg)
+| 1  |      2      |  3 |
+|----------|:-------------:|------:|
+| <img src="https://pp.userapi.com/c639821/v639821646/35317/ok-QnXvZtgw.jpg" alt="Mainpage" width= "200px"/> |  <img src="https://pp.userapi.com/c639821/v639821646/3531f/D9eZFkZh2eM.jpg" alt="Mainpage" width= "200px"/>  | <img src="https://pp.userapi.com/c639821/v639821646/3532b/jnICVzXFwQc.jpg" alt="Mainpage" width= "200px"/>|
 
-![](https://pp.userapi.com/c836329/v836329654/557c0/aS5Ie8FAz3I.jpg)
+
+| 4  |     5    | 6|
+|----------|:-------------:|------:|
+| <img src="https://pp.userapi.com/c639821/v639821646/35333/UKsyt8-tLfs.jpg" alt="Mainpage" width= "200px"/> |  <img src="https://pp.userapi.com/c639821/v639821646/3533b/o_MeAVtvYCc.jpg" alt="Mainpage" width= "200px"/>  | <img src="https://pp.userapi.com/c639821/v639821646/35343/uBjgH8vnPgw.jpg" alt="Mainpage" width= "200px"/>|
+
+
+| 7 |     
+|----------|
+| <img src="https://pp.userapi.com/c639821/v639821646/3534b/qkZUAGkNfKY.jpg" alt="Mainpage" width= "200px"/> | 
